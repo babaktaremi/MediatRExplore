@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using MediatRExploration.Application.BookApplication.AddBook;
 using MediatRExploration.Application.BookApplication.GetBookById;
 
 namespace MediatRExploration.Controllers
@@ -28,6 +29,17 @@ namespace MediatRExploration.Controllers
                 return NotFound();
 
             return Ok(book);
+        }
+
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreateBook(AddBookRequest request)
+        {
+            var command = await _mediator.Send(request);
+
+            if (command)
+                return Ok();
+
+            return BadRequest();
         }
     }
 }
