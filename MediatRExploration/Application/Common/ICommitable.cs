@@ -8,7 +8,7 @@ namespace MediatRExploration.Application.Common
     /// <summary>
     /// Acts as a marker for requests that require data to be saved in database
     /// </summary>
-   public interface ICommit
+   public interface ICommitable
     {
     }
 }

@@ -7,7 +7,7 @@ using MediatRExploration.Application.Common;
 
 namespace MediatRExploration.Application.BookApplication.AddBook
 {
-    public class AddBookRequest:IRequest<bool>,ICommit
+    public class AddBookRequest:IRequest<bool>,ICommitable
     {
         public string Id { get; set; }
         public string Title { get; set; }

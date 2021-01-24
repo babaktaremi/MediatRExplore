@@ -19,7 +19,7 @@ namespace MediatRExploration.Application.Common
 
         public async Task Process(TRequest request, TResponse response, CancellationToken cancellationToken)
         {
-            if (request is ICommit)
+            if (request is ICommitable)
             {
                 _logger.LogWarning("Saving Changes to the database");
             }
