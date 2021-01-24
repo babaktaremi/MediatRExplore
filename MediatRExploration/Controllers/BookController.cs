@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MediatRExploration.Application.BookApplication.AddBook;
 using MediatRExploration.Application.BookApplication.GetBookById;
+using MediatRExploration.Application.Common.Notifications.EmailNotification;
 
 namespace MediatRExploration.Controllers
 {
@@ -37,8 +38,11 @@ namespace MediatRExploration.Controllers
             var command = await _mediator.Send(request);
 
             if (command)
-                return Ok();
+            {
+                await _mediator.Publish(new EmailNotification("admin@site.com", "A New Book Was Added"));
 
+                return Ok();
+            }
             return BadRequest();
         }
     }
